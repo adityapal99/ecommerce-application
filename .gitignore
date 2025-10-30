@@ -24,6 +24,9 @@ build/
 .vite/
 .vscode/
 
+
+jwt_private.b64
+jwt_public.b64
 # ── Frontend (Vite) ──────────────────
 frontend/node_modules/
 frontend/dist/
