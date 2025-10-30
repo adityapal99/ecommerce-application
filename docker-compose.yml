@@ -1,0 +1,63 @@
+version: "3.9"
+
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "8080:80"
+    depends_on:
+      - gateway
+    networks: [appnet]
+  gateway:
+    build: ./gateway
+    env_file:
+      - ./gateway/.env
+    ports:
+      - "4000:4000"
+    depends_on:
+      - auth
+      - product
+      - cart
+    networks: [appnet]
+
+  auth:
+    build: ./services/auth
+    env_file:
+      - ./services/auth/.env
+    depends_on:
+      - mongo
+    networks: [appnet]
+
+  product:
+    build: ./services/product
+    env_file:
+      - ./services/product/.env
+    depends_on:
+      - mongo
+    networks: [appnet]
+
+  cart:
+    build: ./services/cart
+    env_file:
+      - ./services/cart/.env
+    depends_on:
+      - mongo
+    networks: [appnet]
+
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpass
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+    networks: [appnet]
+
+networks:
+  appnet:
+
+volumes:
+  mongo_data:

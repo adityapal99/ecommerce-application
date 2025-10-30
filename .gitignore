@@ -1,0 +1,58 @@
+# ── Node ─────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# env
+.env
+*.env
+.env.*
+
+# logs
+logs
+*.log
+log.txt
+
+# build
+dist/
+build/
+.cache/
+.temp/
+.tmp/
+.vite/
+.vscode/
+
+# ── Frontend (Vite) ──────────────────
+frontend/node_modules/
+frontend/dist/
+
+# ── Backend / Services ───────────────
+gateway/node_modules/
+gateway/.env
+services/*/node_modules/
+services/*/dist/
+services/*/.env
+
+# ts
+*.tsbuildinfo
+
+# RSA keys
+*.pem
+
+# ── Docker ───────────────────────────
+docker-data/
+data/
+*.pid
+
+# ── OS ───────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── IDE ──────────────────────────────
+.vscode/
+.idea/
+
+# ── Misc ─────────────────────────────
+*.local
